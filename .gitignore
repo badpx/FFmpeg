@@ -1,3 +1,5 @@
+*.wasm
+*.bak
 *.a
 *.o
 *.o.*
@@ -41,3 +43,4 @@
 /src
 /mapfile
 /tools/python/__pycache__/
+build/
