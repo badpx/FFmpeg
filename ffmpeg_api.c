@@ -7,13 +7,17 @@
 #include <libavutil/opt.h>
 #include <libavutil/channel_layout.h>
 #include <libavutil/samplefmt.h>
+#include <emscripten.h>
 
+//EM_JS(void, js_print, (const char* str), {
+//  console.log(UTF8ToString(str));
+//});
 
-// 获取版本信息
-unsigned int get_avcodec_version() {
-    return avcodec_version();
-}
+/* 声明外部函数：来自JS注入，属于模块 "env" 字段 "js_log" */
+__attribute__((import_module("env"), import_name("js_log")))
+extern void js_log(const char* s, size_t len);
 
+EMSCRIPTEN_KEEPALIVE
 char* get_version_str() {
     static char version_str[32];
     unsigned int version = avcodec_version();
@@ -25,3 +29,8 @@ char* get_version_str() {
     return version_str;
 }
 
+// 获取版本信息
+unsigned int get_avcodec_version() {
+    js_log("get_avcodec_version called", strlen("get_avcodec_version called"));
+    return avcodec_version();
+}

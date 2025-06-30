@@ -12,7 +12,6 @@ emcc \
     -lavformat -lavcodec -lswresample -lavutil -lm \
     -Wl,--no-entry  \
     -Wl,--export=get_avcodec_version    \
-    -Wl,--export=get_version_str    \
     -s STANDALONE_WASM=1    \
     -s ASSERTIONS=1 \
     -O1 \
