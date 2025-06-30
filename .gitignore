@@ -44,3 +44,4 @@
 /mapfile
 /tools/python/__pycache__/
 build/
+temp/
