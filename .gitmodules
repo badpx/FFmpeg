@@ -1,0 +1,3 @@
+[submodule "thirdparty/lame-3.100"]
+	path = thirdparty/lame-3.100
+	url = git@github.com:badpx/lame-3.100.git
